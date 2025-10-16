@@ -19,7 +19,7 @@ public class ParticipanteController {
     ParticipanteService service;
 
     //Exibir todos os participantes de um sorteio específico
-    @GetMapping("/vencedores/{id}") 
+    @GetMapping("/sorteio/{id}") 
     public List<ParticipanteDto> findAllBySorteioId(@PathVariable("id")Long sorteioId){
         return service.findAllBySorteioId(sorteioId);
     }

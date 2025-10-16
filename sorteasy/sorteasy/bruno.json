@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "sorteasy",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}
