@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.sorteasy.sorteasy.dto.ParticipanteDto;
 import com.sorteasy.sorteasy.service.ParticipanteService;
+
+import jakarta.validation.Valid;
 @RestController
 @RequestMapping("/api/v1/participante")
 public class ParticipanteController {
@@ -27,7 +29,7 @@ public class ParticipanteController {
     //Criar um novo participante
     @PostMapping
     public ParticipanteDto save(
-            @RequestBody ParticipanteDto participanteCreateDTO ){
+            @RequestBody @Valid ParticipanteDto participanteCreateDTO ){
         return service.save(participanteCreateDTO);
     }
     

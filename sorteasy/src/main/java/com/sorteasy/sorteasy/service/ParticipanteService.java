@@ -7,13 +7,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.sorteasy.sorteasy.dto.ParticipanteDto;
 import com.sorteasy.sorteasy.entity.Participante;
+import com.sorteasy.sorteasy.entity.Sorteio;
 import com.sorteasy.sorteasy.repository.ParticipanteRepository;
+import com.sorteasy.sorteasy.repository.SorteioRepository;
 
 @Service
 public class ParticipanteService {
     @Autowired
     private ParticipanteRepository participanteRepository;
 
+    @Autowired
+    private SorteioRepository sorteioRepository;
 
     //metodo para exibir historico de vencedores
     public List<ParticipanteDto> findAllVencedores() {
@@ -29,7 +33,8 @@ public class ParticipanteService {
     
     //metodo para exibir todos os participantes de um sorteio específico
     public List<ParticipanteDto> findAllBySorteioId(Long sorteioId) {
-        List<Participante> participantes = participanteRepository.findAllBySorteioId(sorteioId);
+        Sorteio sorteio = sorteioRepository.findById(sorteioId).orElseThrow();
+        List<Participante> participantes = sorteio.getParticipantes();
         List<ParticipanteDto> participanteDtos = new ArrayList<>();
         for (Participante participante : participantes) {
             participanteDtos.add(toDTO(participante));

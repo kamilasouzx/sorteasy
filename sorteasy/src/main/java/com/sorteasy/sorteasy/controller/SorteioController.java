@@ -11,8 +11,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sorteasy.sorteasy.dto.ParticipanteDto;
 import com.sorteasy.sorteasy.dto.SorteioDto;
 import com.sorteasy.sorteasy.service.SorteioService;
+
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/v1/sorteio")
@@ -29,7 +32,7 @@ public class SorteioController {
     //Criar um novo sorteio
     @PostMapping
     public SorteioDto save(
-            @RequestBody SorteioDto sorteioCreateDTO ){
+            @RequestBody @Valid SorteioDto sorteioCreateDTO ){
         return service.save(sorteioCreateDTO);
     }
 
@@ -40,7 +43,7 @@ public class SorteioController {
 
     //metodo para realizar o sorteio e definir o vencedor aleatoriamente
     @GetMapping("/{id}/realizar")
-    public SorteioDto realizarSorteio(@PathVariable Long id) {
+    public ParticipanteDto realizarSorteio(@PathVariable Long id) {
         return service.realizarSorteio(id);
     }
 
