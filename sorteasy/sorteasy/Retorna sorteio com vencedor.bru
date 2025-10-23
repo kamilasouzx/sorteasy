@@ -1,12 +1,12 @@
 meta {
-  name: Criar um sorteio
+  name: Retorna sorteio com vencedor
   type: http
-  seq: 1
+  seq: 5
 }
 
 get {
   url: http://localhost:8080/api/v1/sorteio/vencedores
-  body: json
+  body: none
   auth: inherit
 }
 
