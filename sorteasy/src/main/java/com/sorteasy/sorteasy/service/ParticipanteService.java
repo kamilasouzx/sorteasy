@@ -19,6 +19,12 @@ public class ParticipanteService {
     @Autowired
     private SorteioRepository sorteioRepository;
 
+    //TAREFA 3:
+    //metodo para deletar um participante pelo ID 
+    public void deleteById(Long id) {
+        sorteioRepository.deleteById(id);
+    }
+
     //metodo para exibir historico de vencedores
     public List<ParticipanteDto> findAllVencedores() {
         List<Participante> vencedores = participanteRepository.findAllVencedores();

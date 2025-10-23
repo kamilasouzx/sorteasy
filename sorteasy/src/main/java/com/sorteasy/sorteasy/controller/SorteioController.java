@@ -47,9 +47,18 @@ public class SorteioController {
         return service.realizarSorteio(id);
     }
 
+    //TAREFA 1:
     //Listar apenas sorteios que não foram finalizados
     @GetMapping("/ativos")
     public List<SorteioDto> findAllAtivos(){
         return service.findAllAtivos();
     }
+
+    //TAREFA 2:
+    //retornar todos os sorteios que já possuem um vencedor definido
+    @GetMapping("/vencedores")
+    public List <SorteioDto> findAllComVencedor(){
+        return service.findAllComVencedor();
+    }
 }
+

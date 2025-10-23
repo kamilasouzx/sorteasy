@@ -19,6 +19,18 @@ public class SorteioService {
 
     @Autowired ParticipanteService participanteService;
 
+    //TAREFA 2:
+    //metodo que retorna todos os sorteios que já possuem um vencedor definido
+    public List <SorteioDto> findAllComVencedor(){
+        List<Sorteio> sorteios = sorteioRepository.findAllComVencedor();
+        List<SorteioDto> sorteioDtos = new ArrayList<>();
+        for (Sorteio sorteio : sorteios) {
+            sorteioDtos.add(toDTO(sorteio));
+    }
+        return sorteioDtos;
+    }
+
+    //TAREFA 1:
     //Listar apenas sorteios que não foram finalizados
     public List<SorteioDto> findAllAtivos(){
         List<Sorteio> sorteios = sorteioRepository.findAllAtivos();

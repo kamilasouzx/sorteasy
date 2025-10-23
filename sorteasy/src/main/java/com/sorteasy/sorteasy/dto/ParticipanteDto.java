@@ -30,6 +30,6 @@ public class ParticipanteDto {
     @Email(message = "Email invalido")
     private String email;
     
-    @NotNull(message = "O ID do sorteio deve ser preenchido")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Sorteio sorteio;
 }
